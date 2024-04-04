@@ -42,13 +42,16 @@ def logreg_train(X, Y, lambda_, lr, num_iters):
             
             loss_l.append(loss)
             accuracy_l.append(accuracy)
-            
-            loss_t, accl_t = tt.test(w, b)
-            accuracy_lt.append(accl_t)
-            loss_lt.append(loss_t)
 
+            if os.path.exists("titanic-model.npz"):
+                loss_t, accl_t = tt.test(w, b)
+                accuracy_lt.append(accl_t)
+                loss_lt.append(loss_t)
 
-    return w, b, loss_l, accuracy_l, loss_lt, accuracy_lt
+    if os.path.exists("titanic-model.npz"):
+        return w, b, loss_l, accuracy_l, loss_lt, accuracy_lt
+    else
+        return w, b, loss_l, accuracy_l, [], []
 
 
 def load_file(filename):
