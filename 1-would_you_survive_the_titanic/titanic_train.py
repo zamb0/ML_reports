@@ -50,7 +50,7 @@ def logreg_train(X, Y, lambda_, lr, num_iters):
 
     if os.path.exists("titanic-model.npz"):
         return w, b, loss_l, accuracy_l, loss_lt, accuracy_lt
-    else
+    else:
         return w, b, loss_l, accuracy_l, [], []
 
 
